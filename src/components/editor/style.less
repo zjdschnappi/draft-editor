@@ -1,0 +1,197 @@
+@import './dropdown/style.less';
+@import './emojiPicker/style.less';
+@import './imagePicker/style.less';
+@import './colorPicker/style.less';
+@import './projectPicker/style.less';
+@toolbar-img: '../../img/customEditor/editor-toolbar-icon.png';
+@toobalBgPos: -28px;
+.editor-dialog {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 0 5px #d1d4d7;
+}
+.custom-editor {
+    border: 1px solid #e8ecf2;
+    .custom-editor-toolbar {
+        padding: 0px 10px;
+        height: 54px;
+        line-height: 50px;
+        color: #666;
+        border-bottom: 1px solid #e8e8e8;
+        background-color: #fafafa;
+    }
+    .toolbar-li {
+        float: left;
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover {
+            color: #268ef2;
+            .toolbar-i {
+                background-position: -2px @toobalBgPos;
+            }
+            .i-img {
+                background-position: -2px @toobalBgPos * 3;
+            }
+
+            .i-project {
+                background-position: -2px @toobalBgPos * 5;
+            }
+            .i-race {
+                background-position: -2px @toobalBgPos * 7;
+            }
+            .i-at {
+                background-position: -2px @toobalBgPos * 9;
+            }
+            .i-foreColor {
+                background-position: -2px @toobalBgPos * 11;
+            }
+            .foreColor {
+                background: #268ef2;
+            }
+            .i-bold {
+                background-position: -2px @toobalBgPos * 13;
+            }
+
+            // 显示 hover 的背景图片
+            .i-backColor {
+                background: url('@{toolbar-img}') -3px @toobalBgPos * 15-1px;
+            }
+            // 隐藏，显示 .i-backcolor 的背景图片
+            .backColor {
+                display: none;
+            }
+
+            .i-removeFormat {
+                background-position: -2px @toobalBgPos * 17;
+            }
+
+            .i-fullscreen {
+                background-position: -2px @toobalBgPos * 19;
+            }
+        }
+    }
+    .active {
+        .toolbar-i {
+            border: 1px solid #d1d1d1;
+            background-color: #ebebeb;
+        }
+    }
+    .divider {
+        float: left;
+        width: 1px;
+        height: 24px;
+        overflow: hidden;
+        background-color: #e8e8e8;
+        margin: 15px 10px;
+    }
+
+    .toolbar-i {
+        width: 24px;
+        height: 24px;
+        margin-right: 2px;
+        border: 1px solid #fafafa;
+        border-radius: 2px;
+        background: url('@{toolbar-img}') no-repeat -2px 0px;
+        vertical-align: middle;
+    }
+
+    .i-img {
+        background-position-y: @toobalBgPos * 2;
+    }
+
+    .i-project {
+        background-position-y: @toobalBgPos * 4;
+    }
+    .i-race {
+        background-position-y: @toobalBgPos * 6;
+    }
+    .i-at {
+        background-position-y: @toobalBgPos * 8;
+    }
+    .i-foreColor {
+        background-position-y: @toobalBgPos * 10;
+    }
+    // 当前选中内容的前景颜色
+    .foreColor {
+        display: block;
+        width: 13px;
+        height: 2px;
+        margin: 17px auto 0 auto;
+
+        overflow: hidden;
+
+        // 默认颜色
+        background-color: #b3b5b8;
+    }
+    .i-bold {
+        background-position-y: @toobalBgPos * 12;
+    }
+
+    // 背景色的 span 使用背景图片
+    .i-backColor {
+        background: none;
+    }
+
+    // 当前选中内容的背景颜色
+    .backColor {
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin: 3px 0 0 3px;
+        border-radius: 2px;
+        background: #b3b5b8 url('@{toolbar-img}') -6px -396px;
+    }
+
+    .i-removeFormat {
+        background-position-y: @toobalBgPos * 16;
+    }
+
+    .i-fullscreen {
+        background-position-y: @toobalBgPos * 18;
+    }
+    .object-editor-textRemain {
+        display: block;
+        padding: 5px 10px;
+        color: #999;
+        border-top: 1px solid #e8ecf2;
+        text-align: right;
+    }
+    .custom-editor-content {
+        overflow: auto;
+    }
+    .DraftEditor-root {
+        height: 100%;
+        padding: 20px;
+    }
+    .public-DraftEditor-content {
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    .editor-image {
+        user-select: none;
+    }
+    .span-emoji {
+        caret-color: black;
+        margin-right: 2px;
+        pointer-events: none;
+        span[data-offset-key] {
+            background-color: unset !important;
+        }
+        span[data-text] {
+            opacity: 0;
+            font-size: 32px;
+        }
+    }
+    .tag-project {
+        margin: 0 3px;
+        padding: 0 3px;
+        background-color: #36a738;
+        color: #fff;
+        outline: none;
+        border: none;
+        border-radius: 2px;
+    }
+    .tag-project {
+        background-color: #ec5841;
+    }
+}

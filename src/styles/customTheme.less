@@ -1,0 +1,44 @@
+@btn-primary-bg: #ea4740;
+
+
+// @a-link-color:#8dacf6;
+// a{
+//     color: @a-link-color;
+//     &:active,&:hover{
+//         color: color(~`colorPalette("@{a-link-color}", 7)`);
+//     }
+// }
+//modal 样式 垂直居中
+.ant-modal-wrap {
+    text-align: center;
+    white-space: nowrap;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        width: 0;
+    }
+    .ant-modal {
+        display: inline-block;
+        vertical-align: middle;
+        top: 0;
+        text-align: left;
+    }
+}
+
+//confirm 弹框 按钮改为居中
+.ant-confirm {
+    .ant-confirm-btns {
+        float: none;
+        text-align: center;
+    }
+}
+.ant-select-arrow{
+    &:before {
+        content:'\E606'
+    }
+}
+.ant-confirm-content {
+    white-space: normal
+}

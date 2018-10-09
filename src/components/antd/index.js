@@ -1,0 +1,51 @@
+import {
+    Avatar,
+    DatePicker,
+    Pagination,
+    Select,
+    Modal,
+    Tooltip,
+    message,
+    Form,
+    Icon,
+    Button,
+    Input,
+    InputNumber,
+    Dropdown,
+    Menu,
+    Tabs,
+    Table,
+    Checkbox,
+    Radio,
+    Row,
+    Col,
+    LocaleProvider,
+} from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import hoistNonReactStatics from 'hoist-non-react-statics'; //复制静态方法 因高阶组件不会将源组件静态方法返回
+import modalHigherComponent from './modalHigherComponent';
+
+export default window.antd = {
+    Avatar,
+    DatePicker,
+    Pagination,
+    Select,
+    Modal: hoistNonReactStatics(modalHigherComponent(Modal),Modal),
+    Tooltip,
+    message,
+    Form,
+    Icon,
+    Button,
+    Input,
+    InputNumber,
+    Dropdown,
+    Menu,
+    Tabs,
+    Table,
+    Checkbox,
+    Radio,
+    Row,
+    Col,
+    LocaleProvider,
+    zh_CN
+}
