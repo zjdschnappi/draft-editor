@@ -7,26 +7,26 @@ const getFileList = require('./getFileList');
 
 // 多入口配置
 
-
 const fileList = getFileList('./src/pages/');
 
 const entryMap = {};
-fileList.forEach(file => {
+fileList.forEach((file) => {
   if (/\.js|jsx$/.test(file.filename)) {
     let path = file.path.replace(/\.\/src\/pages\//, '');
     let name = file.filename.replace(/\.js$/, '').replace(/\.jsx$/, '');
     entryMap[`${path}${name}`] = `${file.path}${name}`;
   }
-})
+});
 
 module.exports = {
   entry: entryMap,
   output: {
     path: path.join(__dirname, '../static'),
-    filename: 'js/[name].js',
+    filename: 'js/[name].js'
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(js|jsx)$/,
         enforce: 'pre',
         loader: 'eslint-loader'
@@ -40,10 +40,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
@@ -52,23 +49,23 @@ module.exports = {
           limit: 8192,
           name: 'images/[name].[ext]',
           outputPath: '../static/',
-          publicPath: '/',
+          publicPath: '/static'
         }
-      },
+      }
     ]
   },
   externals: {},
   resolve: {
     alias: {
-      'models': path.resolve(__dirname, '../src/models'),
-      'routes': path.resolve(__dirname, '../src/routes'),
-      'pages': path.resolve(__dirname, '../src/pages'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'modules': path.resolve(__dirname, '../src/modules'),
-      'styles': path.resolve(__dirname, '../src/styles'),
-      'utils': path.resolve(__dirname, '../src/utils'),
-      'layouts': path.resolve(__dirname, '../src/layouts'),
-      'img': path.resolve(__dirname, '../src/img'),
+      models: path.resolve(__dirname, '../src/models'),
+      routes: path.resolve(__dirname, '../src/routes'),
+      pages: path.resolve(__dirname, '../src/pages'),
+      components: path.resolve(__dirname, '../src/components'),
+      modules: path.resolve(__dirname, '../src/modules'),
+      styles: path.resolve(__dirname, '../src/styles'),
+      utils: path.resolve(__dirname, '../src/utils'),
+      layouts: path.resolve(__dirname, '../src/layouts'),
+      img: path.resolve(__dirname, '../src/img')
     },
     extensions: ['.jsx', '.js']
   },
@@ -78,17 +75,19 @@ module.exports = {
       ReactDOM: 'react-dom',
       PropTypes: 'prop-types',
       dva: 'dva',
-      antd: 'antd',
+      antd: 'antd'
     }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '../'),
       manifest: require('./vendor-manifest.json'),
-      name: 'vendor',
+      name: 'vendor'
     }),
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../libs'),
-      to: path.resolve(__dirname, '../static'),
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../libs'),
+        to: path.resolve(__dirname, '../static')
+      }
+    ]),
     new ProgressBarPlugin()
   ]
 };

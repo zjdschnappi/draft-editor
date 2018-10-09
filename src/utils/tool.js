@@ -1,21 +1,4 @@
 /**
- * 自动补充0，比如在分钟把 3 变成 03
- *
- * @param {Int} val 传入的数字
- * @param {Int} len 要填补0的个数
- * @returns {String} val
- */
-const zeropad = () => {
-  let val, len;
-  val = '' + val;
-  len = len || 2;
-  while (val.length < len) {
-    val = '0' + val;
-  }
-  return val;
-};
-
-/**
  * 获取url中的参数
  *
  * @param {String} name 要获取的参数名
@@ -25,15 +8,6 @@ const getQueryString = (name) => {
   var r = window.location.search.substr(1).match(reg);
   if (r != null) return unescape(r[2]);
   return '';
-};
-
-/**
- * 页面跳转函数
- *
- * @param {String} url 要跳转的url
- */
-const redirectTo = (url) => {
-  typeof url === 'string' && (window.location.href = `url`);
 };
 
 /**
@@ -158,9 +132,7 @@ const escapeTagToCode = (text) => {
     .replace(/"/g, '&quot;');
 };
 export default {
-  zeropad,
   getQueryString,
-  redirectTo,
   debounce,
   throttle,
   HTMLEncode,
