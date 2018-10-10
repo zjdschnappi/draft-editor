@@ -18,7 +18,7 @@ export const showErrorMessage = error.showErrorMessage;
  * ================
  */
 
-/*eslint-disable no-console */
+/*eslint-disable */
 export const log = (...args) => {
   if (process.env.NODE_ENV === 'development') {
     console.log(...args);

@@ -1,5 +1,4 @@
 import Dropdown from '../dropDown';
-
 const emojiUrlPrefix = CONFIG.resourcePath + '/images/emojis';
 
 export default class EmojiPicker extends React.Component {

@@ -88,6 +88,12 @@ module.exports = {
         to: path.resolve(__dirname, '../static')
       }
     ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/img/emojis'),
+        to: path.resolve(__dirname, '../static/images/emojis')
+      }
+    ]),
     new ProgressBarPlugin()
   ]
 };
