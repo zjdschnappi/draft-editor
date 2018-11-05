@@ -65,7 +65,8 @@ module.exports = {
       styles: path.resolve(__dirname, '../src/styles'),
       utils: path.resolve(__dirname, '../src/utils'),
       layouts: path.resolve(__dirname, '../src/layouts'),
-      img: path.resolve(__dirname, '../src/img')
+      img: path.resolve(__dirname, '../src/img'),
+      reducer: path.resolve(__dirname, '../src/reducer')
     },
     extensions: ['.jsx', '.js']
   },

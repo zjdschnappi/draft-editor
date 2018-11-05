@@ -1,0 +1,66 @@
+.add-input {
+    padding: 16px 16px 16px 60px;
+    border: 1px solid #ddd;
+    background: rgba(0, 0, 0, 0.003);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.03);
+    position: relative;
+    margin: 0;
+    width: 100%;
+    font-size: 24px;
+    outline: none;
+}
+.header {
+    text-align: center;
+}
+.content {
+    border: 1px solid #ddd;
+    border-top: 0;
+    padding: 0 5px;
+    .todo-list {
+        display: inline-block;
+        width: 100%;
+    }
+    .todo-li {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        &:hover {
+            .close {
+                display: inline-block;
+            }
+        }
+    }
+    .todo-text,
+    .close {
+        line-height: 40px;
+        height: 40px;
+    }
+    .close {
+        float: right;
+        display: none;
+    }
+    .edit-input {
+        border: none;
+        width: 85%;
+        outline: none;
+    }
+}
+.todo-footer {
+    border: 1px solid #ddd;
+    border-top: 0;
+    padding: 5px;
+    .tabs {
+        margin-left: 30px;
+    }
+    .tab-btn {
+        display: inline-block;
+        padding: 0 5px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    .active {
+        border: 1px solid #ddd;
+    }
+}
