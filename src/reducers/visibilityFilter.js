@@ -1,4 +1,4 @@
-const visibilityFilter = (state = {}, action) => {
+const visibilityFilter = (state = 'all', action) => {
   switch (action.type) {
     case 'showAll':
       return { ...state, ...action.payload };

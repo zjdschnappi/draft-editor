@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Todo from 'components/todo';
+
 class Todolist extends React.Component {
   render() {
-    const { todoList, closeHandle, editClickHandle, blurHandler, checkToggle, showType } = this.props;
+    const { todoList, showType } = this.props;
     return (
       <ul className="todo-list">
         {todoList.map((item, index) => {
@@ -22,10 +24,10 @@ class Todolist extends React.Component {
               completed={item.completed}
               editVisible={item.editVisible}
               value={item.value}
-              closeHandle={closeHandle}
-              editClickHandle={editClickHandle}
-              blurHandler={blurHandler}
-              checkToggle={checkToggle}
+              // closeHandle={closeHandle}
+              // editClickHandle={editClickHandle}
+              // blurHandler={blurHandler}
+              // checkToggle={checkToggle}
             />
           );
         })}
@@ -33,4 +35,7 @@ class Todolist extends React.Component {
     );
   }
 }
-export default Todolist;
+const mapStateToProps = (state, ownProps) => ({
+  todoList: state.todoList
+});
+export default connect(mapStateToProps)(Todolist);

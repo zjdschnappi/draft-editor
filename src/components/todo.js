@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 const { Checkbox, Icon } = window.antd;
 class Todo extends React.Component {
   onChange = (e, id) => {
-    this.props.checkToggle(e.target.checked, id);
+    this.props.dispatch({
+      type: 'TOGGLE_TODO',
+      id
+    });
   };
   state = {
     inputValue: this.props.value
@@ -12,8 +16,27 @@ class Todo extends React.Component {
       inputValue: e.target.value
     });
   };
+  blurHandler = (id) => {
+    this.props.dispatch({
+      type: 'FINISH_EDIT_TODO',
+      id,
+      value: this.state.inputValue
+    });
+  };
+  deleteHandle = (id) => {
+    this.props.dispatch({
+      type: 'DELETE_TODO',
+      id
+    });
+  };
+  editClickHandle = (id) => {
+    this.props.dispatch({
+      type: 'EDIT_TODO',
+      id
+    });
+  };
   render() {
-    const { value, editVisible, closeHandle, editClickHandle, blurHandler, id, completed, style } = this.props;
+    const { value, editVisible, id, completed, style } = this.props;
     const { inputValue } = this.state;
     return (
       <li className="todo-li" style={style}>
@@ -23,7 +46,7 @@ class Todo extends React.Component {
             <span
               className="todo-text"
               style={!completed ? { textDecoration: 'none' } : { textDecoration: 'line-through' }}
-              onDoubleClick={() => editClickHandle(id)}
+              onDoubleClick={() => this.editClickHandle(id)}
             >
               {value}
             </span>
@@ -34,7 +57,7 @@ class Todo extends React.Component {
           type="close"
           className="close"
           onClick={() => {
-            closeHandle(id);
+            this.deleteHandle(id);
           }}
         />
         {editVisible ? (
@@ -45,7 +68,7 @@ class Todo extends React.Component {
             onChange={this.inputChange}
             value={inputValue}
             onBlur={() => {
-              blurHandler(inputValue, id);
+              this.blurHandler(id);
             }}
           />
         ) : null}
@@ -54,4 +77,4 @@ class Todo extends React.Component {
   }
 }
 
-export default Todo;
+export default connect()(Todo);
